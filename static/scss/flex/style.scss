@@ -1,14 +1,23 @@
+@import "functions";
+@import "colors";
 @import "fonts";
+@import "variables";
 
-@import "header";
-@import "menu";
+@import "layout";
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+}
 
 @import "main";
 
 @import "article";
-@import "footer";
-@import "shortcode.notice";
-@import "shortcode.children";
+@import "shortcodes";
 
-
-@import "medias" ;
+@import "responsive";
+@import "print";

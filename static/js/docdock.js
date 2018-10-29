@@ -19,7 +19,8 @@ var getUrlParameter = function getUrlParameter(sPageURL) {
 jQuery(document).ready(function () {
 
     // Execute actions on images generated from Markdown pages
-    var images = $("article img").not(".inline");
+    var images = $("div#body-inner img").not(".inline");
+
     // Wrap image inside a featherlight (to get a full size view in a popup)
     images.wrap(function () {
         var image = $(this);
@@ -99,9 +100,6 @@ function fallbackMessage(action) {
 }
 
 jQuery(document).ready(function() {
-
-    baseurl = baseurl.endsWith('/')?baseurl:baseurl+'/';
-
     jQuery('#sidebar .category-icon').on('click', function() {
         $( this ).toggleClass("fa-angle-down fa-angle-right") ;
         $( this ).parent().parent().children('ul').toggle() ;
@@ -150,7 +148,7 @@ jQuery(document).ready(function() {
     if (sessionStorage.getItem('search-value')) {
         var searchValue = sessionStorage.getItem('search-value')
         sessionStorage.removeItem('search-value');
-        var searchedElem = $('article').find(':contains(' + searchValue + ')').get(0);
+        var searchedElem = $('#body-inner').find(':contains(' + searchValue + ')').get(0);
         searchedElem && searchedElem.scrollIntoView();
         $(".highlightable").highlight(searchValue, { element: 'mark' });
     }
@@ -188,7 +186,7 @@ jQuery(document).ready(function() {
                 clipInit = true;
             }
 
-            code.after('<span class="copy-to-clipboard" title="Copy to clipboard"><object class="clippy-icon" type="image/svg+xml" data="' + baseurl + 'images/clippy.svg"/></span>');
+            code.after('<span class="copy-to-clipboard" title="Copy to clipboard"><object class="clippy-icon" type="image/svg+xml" data="'+baseurl+'/images/clippy.svg"/></span>');
             code.next('.copy-to-clipboard').on('mouseleave', function() {
                 $(this).attr('aria-label', null).removeClass('tooltipped tooltipped-s tooltipped-w');
             });
@@ -218,7 +216,7 @@ jQuery(document).ready(function() {
     });
 
     $('#top-bar a:not(:has(img)):not(.btn)').addClass('highlight');
-    $('article a:not(:has(img)):not(.btn)').addClass('highlight');
+    $('#body-inner a:not(:has(img)):not(.btn)').addClass('highlight');
 });
 
 jQuery(window).on('load', function() {
